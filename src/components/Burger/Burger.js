@@ -6,17 +6,18 @@ import Salad from './Salad';
 
 
 function Burger(props) {
-    let salad = ingredients.find(item => item.name === 'salad')
-    let bacon = props.ingredients.find(item => item.name === 'bacon')
-    let cheese = props.ingredients.find(item => item.name === 'cheese')
-    let meat = props.ingredients.find(item => item.name === 'meat')
+    let Array = Object.values(props.ingredients)
+    let salad = Array.find(item => item.name === 'salad')
+    let bacon = Array.find(item => item.name === 'bacon')
+    let cheese = Array.find(item => item.name === 'cheese')
+    let meat = Array.find(item => item.name === 'meat')
 
 
-    let ingredients = [];
-    for (let i = 0; i < salad.count; i++) ingredients.push(<Salad/>);
-    for (let i = 0; i < bacon.count; i++) ingredients.push(<Bacon/>);
-    for (let i = 0; i < cheese.count; i++) ingredients.push(<Cheese/>);
-    for (let i = 0; i < meat.count; i++) ingredients.push(<Meat/>);
+    let ingredient = [];
+    for (let i = 0; i < salad.count; i++) ingredient.push(<Salad/>);
+    for (let i = 0; i < bacon.count; i++) ingredient.push(<Bacon/>);
+    for (let i = 0; i < cheese.count; i++) ingredient.push(<Cheese/>);
+    for (let i = 0; i < meat.count; i++) ingredient.push(<Meat/>);
 
 
 
@@ -25,7 +26,7 @@ function Burger(props) {
             <div className='Seeds1'></div>
             <div className='Seeds2'></div>
         </div>
-        {ingredients}
+        {ingredient}
 
         <div className='BreadBottom'></div>
 

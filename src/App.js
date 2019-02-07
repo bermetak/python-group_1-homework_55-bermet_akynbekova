@@ -11,55 +11,75 @@ const allIngredients = [
 ];
 
 class App extends Component {
-    // state = {
-    //     ingredients: {
-    //         salad: {count: 2, total: 0},
-    //         cheese: {count: 1, total: 0},
-    //         meat: {count: 1, total: 0},
-    //         bacon: {count: 2, total: 0},
-    //     }
-    // };
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            ingredients: [
-                {name: 'salad', count: 2, total: 0},
-                {name: 'cheese', count: 1, total: 0},
-                {name: 'meat', count: 1, total: 0},
-                {name: 'bacon', count: 2, total: 0},
-            ]
-        };
-Object.keys(this.state)
-
-        this.changeCount = (name, value) => {
-
-            let ingredient = {...this.state.ingredients.find(item => item.name === name)};
-
-            let price = allIngredients.find(item => item.name === name).price;
-            ingredient.count += value;
-
-            ingredient.total = ingredient.count * price;
-
-            let ingredients = {...this.state.ingredients};
+    state = {
+        ingredients: [
+            {name: 'salad', count: 0, total: 0},
+            {name: 'cheese', count: 0, total: 0},
+            {name: 'meat', count: 0, total: 0},
+            {name: 'bacon', count: 0, total: 0},
+        ]
+    };
 
 
-            let state = {...this.state};
-            state.ingredients = ingredients;
+    changeCount = (name, value) => {
+        let ingredient = Object.values({...this.state.ingredients}).find(item => item.name === name);
+        let price = allIngredients.find(item => item.name === name).price;
+        ingredient.count += value;
 
-            this.setState(state);
-        };
-    }
+        ingredient.total = ingredient.count * price;
+
+        let ingredients = {...this.state.ingredients};
+
+        // ingredients[name] = ingredient
+        let state = {...this.state};
+        state.ingredients = ingredients;
+
+        this.setState(state);
+    };
+    onChangeCount = (event, name) => {
+        let ingredient = Object.values({...this.state.ingredients}).find(item => item.name === name);
+
+        let price = allIngredients.find(item => item.name === name).price;
+        ingredient.count = event.target.value;
+
+        ingredient.total = ingredient.count * price;
+
+        let ingredients = {...this.state.ingredients};
+
+        let state = {...this.state};
+        state.ingredients = ingredients;
+
+        this.setState(state);
+    };
+
+    totalPrice = () => {
+        let total = Object.values(this.state.ingredients).map(function(item) {
+              return item.total;
+            });
+        console.log(total)
+        let totalSum = 20
+        for (var i = 0; i < total.length; i++) {
+            totalSum += total[i];
+        }
+        console.log('totalSum')
+        console.log(totalSum)
+        return totalSum
+    };
+
 
     render() {
         return (
             <div className="App">
                 <Burger ingredients={this.state.ingredients}/>
                 <Form
+                    allIngredient={allIngredients}
                     ingredients={this.state.ingredients}
 
-                    countDown={(name) => this.changeCount(name, -1)}
-                    countUp={(name) => this.changeCount(name, +1)}
+                    onLess={this.changeCount}
+                    onMore={this.changeCount}
+                    total={this.totalPrice()}
+                    hangleChange={this.onChangeCount}
                 />
 
             </div>
