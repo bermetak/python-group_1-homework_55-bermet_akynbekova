@@ -2,6 +2,58 @@
   text-align: center;
 }
 
+input[type='number'] {
+    -moz-appearance:textfield;
+    width: 20%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+.label {
+    text-transform: capitalize;
+}
+
+button {
+    padding: 10px;
+    background: #F08E4A;
+    border: 1px solid gray;
+    font-weight: bold;
+    color: #fff;
+}
+
+button:hover {
+    background: #bc581e;
+}
+
+.row {
+    width: 100%;
+}
+.col {
+    display: inline-block;
+    width: 50%;
+}
+
+.Form {
+    padding: 10px;
+    background: #F08E4A;
+    width: 50%;
+    margin: auto;
+    height: 350px;
+    overflow: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+
 .BreadBottom {
     height: 13%;
     width: 80%;
@@ -118,7 +170,7 @@
 .Burger {
     width: 100%;
     margin: auto;
-    height: 250px;
+    height: 350px;
     overflow: auto;
     text-align: center;
     font-weight: bold;
