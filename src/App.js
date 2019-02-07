@@ -30,8 +30,6 @@ class App extends Component {
         ingredient.total = ingredient.count * price;
 
         let ingredients = {...this.state.ingredients};
-
-        // ingredients[name] = ingredient
         let state = {...this.state};
         state.ingredients = ingredients;
 
