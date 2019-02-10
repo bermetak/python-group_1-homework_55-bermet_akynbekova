@@ -6,11 +6,10 @@ import Salad from './Salad';
 
 
 function Burger(props) {
-    let Array = Object.values(props.ingredients)
-    let salad = Array.find(item => item.name === 'salad')
-    let bacon = Array.find(item => item.name === 'bacon')
-    let cheese = Array.find(item => item.name === 'cheese')
-    let meat = Array.find(item => item.name === 'meat')
+    let salad = props.ingredients.find(item => item.name === 'salad')
+    let bacon = props.ingredients.find(item => item.name === 'bacon')
+    let cheese = props.ingredients.find(item => item.name === 'cheese')
+    let meat = props.ingredients.find(item => item.name === 'meat')
 
 
     let ingredient = [];

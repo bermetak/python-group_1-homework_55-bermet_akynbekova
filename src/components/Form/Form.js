@@ -4,19 +4,17 @@ import FormString from "./FormString";
 
 class Form extends Component {
 
-    render() {
-        let Array = Object.values(this.props.ingredients)
-        let allIngredients = this.props.allIngredient
+render () {
 
 
         return <div className='Form'>
             <h3>Ingredients</h3>
-            {allIngredients.map((item, j) => {
+            {this.props.allIngredients.map((item, j) => {
                 return <FormString
                     name={item.name}
                     id={j}
-                    count={Array.find(i => i.name === item.name).count}
-                    buttonStatus ={ (Array.find(i => i.name === item.name).count) <= 0 ? true : false}
+                    count={this.props.ingredients.find(i => i.name === item.name).count}
+                    buttonStatus ={ (this.props.ingredients.find(i => i.name === item.name).count) <= 0 ? true : false}
                     onLess={() => {return this.props.onLess(item.name, -1)}}
                     onMore={() => {return this.props.onLess(item.name, 1)}}
                     handleChange={(event) => {return this.props.hangleChange(event, item.name)}}

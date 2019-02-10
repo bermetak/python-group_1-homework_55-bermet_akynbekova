@@ -29,21 +29,21 @@ class App extends Component {
 
         ingredient.total = ingredient.count * price;
 
-        let ingredients = {...this.state.ingredients};
+        let ingredients = [...this.state.ingredients];
         let state = {...this.state};
         state.ingredients = ingredients;
 
         this.setState(state);
     };
     onChangeCount = (event, name) => {
-        let ingredient = Object.values({...this.state.ingredients}).find(item => item.name === name);
+        let ingredient = [...this.state.ingredients].find(item => item.name === name);
 
         let price = allIngredients.find(item => item.name === name).price;
         ingredient.count = event.target.value;
 
         ingredient.total = ingredient.count * price;
 
-        let ingredients = {...this.state.ingredients};
+        let ingredients = [...this.state.ingredients];
 
         let state = {...this.state};
         state.ingredients = ingredients;
@@ -52,7 +52,7 @@ class App extends Component {
     };
 
     totalPrice = () => {
-        let total = Object.values(this.state.ingredients).map(function(item) {
+        let total = this.state.ingredients.map(function(item) {
               return item.total;
             });
         console.log(total)
@@ -71,7 +71,7 @@ class App extends Component {
             <div className="App">
                 <Burger ingredients={this.state.ingredients}/>
                 <Form
-                    allIngredient={allIngredients}
+                    allIngredients={allIngredients}
                     ingredients={this.state.ingredients}
 
                     onLess={this.changeCount}
